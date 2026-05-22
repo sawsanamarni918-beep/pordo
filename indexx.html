@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوردو | PORDO - حقائب وإكسسوارات</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Cinzel:wght@400;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-alabaster: #FBF9F6;     /* العاجي الكلاسيكي الناعم */
+            --primary-dark: #1E1512;     /* البني الشوكولاتي الداكن جداً */
+            --clay-warm: #A68674;        /* الترابي الدافئ */
+            --gold-matte: #C5A47E;       /* الذهب المطفأ العتيق */
+            --card-ivory: #FAF6F0;       /* خلفية الكروت الترابية */
+            --white: #FFFFFF;
+            --shadow-soft: 0 10px 30px rgba(30, 21, 18, 0.05);
+            --shadow-royal: 0 15px 40px rgba(30, 21, 18, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-alabaster);
+            color: var(--primary-dark);
+            font-family: 'Tajawal', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .announcement-bar {
+            background-color: var(--primary-dark);
+            color: var(--gold-matte);
+            text-align: center;
+            padding: 12px 20px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-bottom: 1px solid var(--gold-matte);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        header {
+            background-color: rgba(251, 249, 246, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(197, 164, 126, 0.15);
+            padding: 20px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .logo-area {
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .logo-main {
+            font-family: 'Amiri', serif;
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            line-height: 1;
+            letter-spacing: 2px;
+        }
+
+        .logo-sub {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            color: var(--gold-matte);
+            letter-spacing: 6px;
+            display: block;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            position: relative;
+            padding: 8px 0;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--gold-matte);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--gold-matte);
+        }
+
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-btn {
+            background: none;
+            border: none;
+            color: var(--primary-dark);
+            font-size: 1.3rem;
+            cursor: pointer;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .header-btn:hover {
+            color: var(--gold-matte);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            background-color: var(--gold-matte);
+            color: var(--white);
+            font-size: 0.75rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .page-section {
+            display: none;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-banner {
+            height: calc(80vh - 130px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(30, 21, 18, 0.45), rgba(30, 21, 18, 0.75)), url('image_9cd0cb.jpg') no-repeat center center/cover;
+            padding: 0 5%;
+            text-align: center;
+            border-bottom: 2px solid var(--gold-matte);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            color: var(--white);
+            z-index: 10;
+        }
+
+        .hero-content h2 {
+            font-family: 'Amiri', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: #E2DDD5;
+            margin-bottom: 35px;
+            font-weight: 300;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+
+        .btn-gold {
+            display: inline-block;
+            background-color: var(--gold-matte);
+            color: var(--white);
+            padding: 14px 40px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            border: 1px solid var(--gold-matte);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .btn-gold:hover {
+            background-color: transparent;
+            color: var(--gold-matte);
+            transform: translateY(-2px);
+        }
+
+        .shop-header {
+            padding: 60px 5% 20px;
+            text-align: center;
+        }
+
+        .filters-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 5%;
+            margin-bottom: 40px;
+            border-top: 1px solid rgba(197, 164, 126, 0.15);
+            border-bottom: 1px solid rgba(197, 164, 126, 0.15);
+            background-color: var(--card-ivory);
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 15px;
+        }
+
+        .filter-tab {
+            background: none;
+            border: none;
+            color: var(--clay-warm);
+            padding: 10px 25px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 30px;
+            font-weight: 500;
+        }
+
+        .filter-tab.active, .filter-tab:hover {
+            background-color: var(--primary-dark);
+            color: var(--gold-matte);
+        }
+
+        .products-grid {
+            max-width: 1400px;
+            margin: 0 auto 100px;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        @media (max-width: 1200px) { .products-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 900px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .products-grid { grid-template-columns: 1fr; } }
+
+        .product-card {
+            background-color: var(--card-ivory);
+            border: 1px solid rgba(197, 164, 126, 0.15);
+            padding: 22px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-royal);
+            border-color: var(--gold-matte);
+        }
+
+        .image-frame {
+            border: 3px double var(--gold-matte);
+            padding: 8px;
+            background-color: var(--bg-alabaster);
+            position: relative;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        .image-frame::before, .image-frame::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-color: var(--gold-matte);
+            border-style: solid;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .image-frame::before {
+            top: 5px; right: 5px;
+            border-width: 1px 1px 0 0;
+        }
+
+        .image-frame::after {
+            bottom: 5px; left: 5px;
+            border-width: 0 0 1px 1px;
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover .image-frame img {
+            transform: scale(1.06);
+        }
+
+        .quick-view-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(30, 21, 18, 0.85);
+            padding: 15px 0;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-frame:hover .quick-view-overlay {
+            transform: translateY(0);
+        }
+
+        .btn-quick-view {
+            color: var(--gold-matte);
+            background: none;
+            border: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-quick-view:hover {
+            color: var(--white);
+        }
+
+        .product-cat {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            color: var(--gold-matte);
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .product-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.35rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            font-weight: 700;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-add-cart {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 12px 0;
+            background-color: var(--primary-dark);
+            color: var(--white);
+            border: 1px solid var(--primary-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-add-cart:hover {
+            background-color: transparent;
+            color: var(--primary-dark);
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 60px auto 120px;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+        }
+
+        @media (max-width: 800px) {
+            .contact-container { grid-template-columns: 1fr; }
+        }
+
+        .contact-info-panel {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 50px;
+            border-radius: 4px;
+            border-bottom: 4px solid var(--gold-matte);
+        }
+
+        .contact-info-panel h3 {
+            font-family: 'Amiri', serif;
+            font-size: 2.2rem;
+            color: var(--gold-matte);
+            margin-bottom: 20px;
+        }
+
+        .contact-info-panel p {
+            color: #C3BDB6;
+            margin-bottom: 40px;
+            font-size: 1.05rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .info-item i {
+            font-size: 1.5rem;
+            color: var(--gold-matte);
+        }
+
+        .info-item a {
+            color: var(--gold-matte);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .info-item a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        .contact-form {
+            background-color: var(--card-ivory);
+            padding: 50px;
+            border: 1px solid rgba(197, 164, 126, 0.2);
+            border-radius: 4px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid rgba(197, 164, 126, 0.3);
+            background-color: var(--bg-alabaster);
+            color: var(--primary-dark);
+            outline: none;
+            font-family: 'Tajawal', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--primary-dark);
+        }
+
+        .cart-drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(30, 21, 18, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .cart-drawer-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 480px;
+            max-width: 100%;
+            height: 100%;
+            background-color: var(--bg-alabaster);
+            z-index: 2001;
+            box-shadow: -10px 0 40px rgba(0,0,0,0.15);
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-direction: column;
+            border-right: 2px solid var(--gold-matte);
+        }
+
+        .cart-drawer-overlay.active .cart-drawer {
+            transform: translateX(0);
+        }
+
+        .cart-header {
+            padding: 30px;
+            border-bottom: 1px solid rgba(197, 164, 126, 0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--card-ivory);
+        }
+
+        .cart-header h3 {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+        }
+
+        .btn-close-cart {
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: var(--primary-dark);
+        }
+
+        .cart-items-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 20px;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(197, 164, 126, 0.1);
+            align-items: center;
+        }
+
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            border: 1px solid var(--gold-matte);
+            padding: 3px;
+            background-color: var(--white);
+        }
+
+        .cart-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+
+        .cart-item-qty {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .qty-btn {
+            background-color: var(--white);
+            border: 1px solid rgba(197, 164, 126, 0.3);
+            width: 25px;
+            height: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .qty-btn:hover {
+            background-color: var(--primary-dark);
+            color: var(--white);
+        }
+
+        .btn-remove-item {
+            background: none;
+            border: none;
+            color: #CC4E4E;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .cart-footer {
+            padding: 30px;
+            border-top: 1px solid rgba(197, 164, 126, 0.15);
+            background-color: var(--card-ivory);
+        }
+
+        .btn-checkout {
+            display: block;
+            width: 100%;
+            padding: 15px 0;
+            background-color: var(--primary-dark);
+            color: var(--white);
+            border: 1px solid var(--primary-dark);
+            text-align: center;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-checkout:hover {
+            background-color: transparent;
+            color: var(--primary-dark);
+        }
+
+        .checkout-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(30, 21, 18, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 3000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .checkout-modal {
+            background-color: var(--bg-alabaster);
+            width: 600px;
+            max-width: 95%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 2px solid var(--gold-matte);
+            padding: 40px;
+            position: relative;
+        }
+
+        .checkout-modal h3 {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 25px;
+            text-align: center;
+            border-bottom: 1px solid rgba(197, 164, 126, 0.15);
+            padding-bottom: 15px;
+        }
+
+        .royal-invoice {
+            border: 2px double var(--gold-matte);
+            padding: 25px;
+            background-color: var(--card-ivory);
+            margin-bottom: 30px;
+        }
+
+        .invoice-header {
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(197, 164, 126, 0.2);
+            padding-bottom: 15px;
+        }
+
+        .invoice-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+        }
+
+        .invoice-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        .quickview-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(30, 21, 18, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 3000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .quickview-modal {
+            background-color: var(--bg-alabaster);
+            width: 900px;
+            max-width: 95%;
+            display: flex;
+            border: 2px solid var(--gold-matte);
+            position: relative;
+        }
+
+        @media (max-width: 800px) {
+            .quickview-modal { flex-direction: column; }
+        }
+
+        .qv-image {
+            flex: 1;
+            background-color: var(--white);
+            border-left: 1px solid rgba(197, 164, 126, 0.2);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qv-image img {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            border: 1px solid var(--gold-matte);
+        }
+
+        .qv-details {
+            flex: 1.2;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .qv-title {
+            font-family: 'Amiri', serif;
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        .qv-desc {
+            color: var(--clay-warm);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--bg-alabaster);
+            padding: 60px 10% 40px;
+            border-top: 3px solid var(--gold-matte);
+            text-align: center;
+        }
+
+        footer h4 {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            color: var(--gold-matte);
+            margin-bottom: 15px;
+        }
+
+        footer p {
+            color: #C3BDB6;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .social-icons a {
+            color: var(--gold-matte);
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--gold-matte);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--gold-matte);
+            color: var(--primary-dark);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(197, 164, 126, 0.1);
+            padding-top: 20px;
+            font-size: 0.85rem;
+            color: var(--clay-warm);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- شريط إعلان التوصيل المجاني للجامعات -->
+    <div class="announcement-bar">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span>التوصيل لجامعة فلسطين التقنية خضوري والجامعة العربية الأمريكية مجاناً</span>
+        <i class="fa-solid fa-graduation-cap"></i>
+    </div>
+
+    <!-- الهيدر الكلاسيكي بـ 3 صفحات -->
+    <header id="header">
+        <div class="logo-area" onclick="switchPage('home')">
+            <h1 class="logo-main">بوردو</h1>
+            <span class="logo-sub">PORDO</span>
+        </div>
+        
+        <nav>
+            <a onclick="switchPage('home')" id="nav-home" class="active">الرئيسية</a>
+            <a onclick="switchPage('shop')" id="nav-shop">المتجر</a>
+            <a onclick="switchPage('contact')" id="nav-contact">تواصل معنا</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="header-btn" onclick="toggleCart()" title="الطلبات">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-badge" id="cart-count">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- 1. الصفحة الرئيسية -->
+    <section id="page-home" class="page-section active">
+        <div class="hero-banner">
+            <div class="hero-content">
+                <h2>أناقتك الكلاسيكية المتميزة مع حقائب بوردو</h2>
+                <p>مجموعة استثنائية من الحقائب المصممة بألوان ترابية متناسقة تفتح النفس.</p>
+                <button class="btn-gold" onclick="switchPage('shop')">تصفح المجموعة</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. صفحة المتجر لـ 20 قطعة (بدون أسعار نهائياً) -->
+    <section id="page-shop" class="page-section">
+        <div class="shop-header">
+            <div class="logo-area">
+                <h1 class="logo-main" style="font-size:2.2rem">معروضات بوردو</h1>
+            </div>
+        </div>
+
+        <div class="filters-container">
+            <div class="filter-tabs">
+                <button class="filter-tab active" onclick="filterCategory('all', this)">كل المعروضات</button>
+                <button class="filter-tab" onclick="filterCategory('bags', this)">الحقائب</button>
+                <button class="filter-tab" onclick="filterCategory('jewelry', this)">المجوهرات</button>
+                <button class="filter-tab" onclick="filterCategory('access', this)">الإكسسوارات والكماليات</button>
+            </div>
+        </div>
+
+        <div class="products-grid" id="products-grid-container">
+            <!-- سيتم تعبئة الـ 20 منتج ديناميكياً بدون أسعار -->
+        </div>
+    </section>
+
+    <!-- 3. صفحة تواصل معنا -->
+    <section id="page-contact" class="page-section">
+        <div class="contact-container">
+            <div class="contact-info-panel">
+                <h3>تواصل مع بوردو</h3>
+                <p>يسعدنا الرد على جميع الاستفسارات والطلبات الخاصة بكِ في أي وقت.</p>
+                
+                <div class="info-item">
+                    <i class="fa-brands fa-instagram"></i>
+                    <div>
+                        <strong>حساب الإنستغرام</strong>
+                        <p><a href="https://www.instagram.com/pordo.storee/" target="_blank">pordo.storee@</a></p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <div>
+                        <strong>التوصيل المجاني للجامعات</strong>
+                        <p>جامعة فلسطين التقنية خضوري & الجامعة العربية الأمريكية</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <div class="form-group">
+                    <label>الاسم</label>
+                    <input type="text" placeholder="اكتب اسمك الكريم">
+                </div>
+                <div class="form-group">
+                    <label>رقم للتواصل</label>
+                    <input type="text" placeholder="رقم هاتفك">
+                </div>
+                <div class="form-group">
+                    <label>الاستفسار</label>
+                    <textarea rows="4" placeholder="اكتب استفسارك هنا"></textarea>
+                </div>
+                <button class="btn-gold" style="width: 100%;">إرسال الاستفسار</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- قائمة الطلبات الجانبية المضافة -->
+    <div class="cart-drawer-overlay" id="cart-overlay" onclick="toggleCart()">
+        <div class="cart-drawer" onclick="event.stopPropagation()">
+            <div class="cart-header">
+                <h3>الطلبات المختارة</h3>
+                <button class="btn-close-cart" onclick="toggleCart()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <div class="cart-items-list" id="cart-items">
+                <!-- تعبأ تلقائياً عند إضافة المنتجات -->
+            </div>
+
+            <div class="cart-footer">
+                <button class="btn-checkout" onclick="openCheckout()">تأكيد الطلب وإرساله عبر الواتساب</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة تأكيد الطلب المخصصة للجامعات -->
+    <div class="checkout-modal-overlay" id="checkout-overlay">
+        <div class="checkout-modal">
+            <button class="btn-close-cart" style="float: left;" onclick="closeCheckout()"><i class="fa-solid fa-xmark"></i></button>
+            <h3>بوابة تأكيد الطلب</h3>
+            
+            <div class="royal-invoice" id="invoice-bill">
+                <div class="invoice-header">
+                    <div class="invoice-title">بوردو | PORDO</div>
+                    <p style="font-size: 0.85rem; color: var(--clay-warm); margin-top: 5px;">قائمة القطع المطلوبة لتأكيدها</p>
+                </div>
+                <div id="invoice-items-list">
+                    <!-- تعبأ بالمنتجات المحددة -->
+                </div>
+                <div style="border-top: 1px dashed var(--gold-matte); margin-top: 15px; padding-top: 15px; text-align: center;">
+                    <p style="font-size: 0.9rem; color: #2E7D32; font-weight: bold;">
+                        <i class="fa-solid fa-circle-check"></i> التوصيل لخضوري والجامعة العربية الأمريكية مجاني تماماً
+                    </p>
+                </div>
+            </div>
+
+            <form id="order-form" onsubmit="submitOrder(event)">
+                <div class="form-group">
+                    <label>الاسم الكامل للمستلم</label>
+                    <input type="text" id="cust-name" required placeholder="يرجى كتابة الاسم الكريم">
+                </div>
+                <div class="form-group">
+                    <label>رقم للتواصل</label>
+                    <input type="tel" id="cust-phone" required placeholder="رقم الهاتف أو الواتساب">
+                </div>
+                <div class="form-group">
+                    <label>الجامعة للتوصيل المجاني</label>
+                    <select id="cust-university" style="width: 100%; padding: 15px; border: 1px solid rgba(197, 164, 126, 0.3); background-color: var(--bg-alabaster); color: var(--primary-dark); font-family: 'Tajawal', sans-serif;">
+                        <option value="جامعة فلسطين التقنية خضوري">جامعة فلسطين التقنية خضوري (توصيل مجاني)</option>
+                        <option value="الجامعة العربية الأمريكية">الجامعة العربية الأمريكية (توصيل مجاني)</option>
+                        <option value="عنوان آخر">عنوان توصيل آخر</option>
+                    </select>
+                </div>
+                <div class="form-group" id="address-field" style="display:none;">
+                    <label>عنوان التوصيل بالتفصيل</label>
+                    <input type="text" id="cust-address" placeholder="يرجى كتابة العنوان">
+                </div>
+                <button type="submit" class="btn-gold" style="width: 100%; margin-top: 20px;">
+                    <i class="fa-brands fa-whatsapp"></i> تأكيد وإرسال الطلب عبر الواتساب
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- نافذة نظرة سريعة للمنتج -->
+    <div class="quickview-modal-overlay" id="qv-overlay" onclick="closeQuickView()">
+        <div class="quickview-modal" onclick="event.stopPropagation()">
+            <button class="btn-close-cart" style="position: absolute; top: 20px; left: 20px; z-index: 10;" onclick="closeQuickView()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="qv-image">
+                <img id="qv-img-src" src="" alt="صورة المنتج">
+            </div>
+            <div class="qv-details">
+                <h3 class="qv-title" id="qv-title-text">اسم المنتج</h3>
+                <p class="qv-desc" id="qv-desc-text">تفاصيل هذه القطعة المميزة المصنوعة من جلود وألوان دافئة مريحة للعين.</p>
+                <button class="btn-add-cart" id="qv-add-btn" onclick="">إضافة لقائمة الطلبات</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- الفوتر الأخير المحدث بإنستغرام بوردو -->
+    <footer>
+        <h4>بوردو | PORDO</h4>
+        <p>تصاميم كلاسيكية مميزة وحقائب بألوان ترابية دافئة تناسب كل الأوقات.</p>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/pordo.storee/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة لصالح بوردو © 2026. تصميم كلاسيكي نظيف وراقٍ.</p>
+        </div>
+    </footer>
+
+    <script>
+        // مصفوفة الـ 20 منتج المميزة (بدون أسعار نهائياً) 
+        // 👇 تم إدراج صوركِ الـ 6 المرفقة بشكل منظم كأول منتجات مع روابطها الصحيحة
+        const products = [
+            {
+                id: 1,
+                title: "حقيبة بوردو النقش الكلاسيكي المذهب",
+                category: "bags",
+                categoryText: "حقائب متميزة",
+                desc: "حقيبة بنقوش كلاسيكية هادئة مع مقبض علوي وقفل ذهبي حرف B الفاخر.",
+                /* 📸 صورة حقيبتكِ الأولى المرفقة */
+                image: "https://scontent.xx.fbcdn.net/v/t1.15752-9/702619496_1489147136237830_6274818760098117292_n.png?_nc_cat=100&ccb=1-7&_nc_sid=9f807c&_nc_ohc=bS0qHskqYnkQ7kNvwE-CwU2&_nc_oc=Adok_-hcrCo2h1V1gOkDWYHa4rYbZ7Qg4dijGdCTYLdyFpNF1x885BmUWJecKAewvc17zBO63UGMok_nnU8gHV4o&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD5QFPMF1UPfAt_x6qWulZeFmLF7VkNsrk4gV6xN_iC2wyNg&oe=6A36DF3A"
+            },
+            {
+                id: 2,
+                title: "حقيبة بوردو الكلاسيكية السوداء",
+                category: "bags",
+                categoryText: "حقائب متميزة",
+                desc: "حقيبة سوداء راقية مصنوعة من الجلد الفاخر مع سلسلة كتف ذهبية وحرف مذهب عريق.",
+                /* 📸 صورة حقيبتكِ الثانية المرفقة */
+                image: "https://scontent.xx.fbcdn.net/v/t1.15752-9/704670982_1288673570048247_8055837921299003682_n.png?_nc_cat=106&ccb=1-7&_nc_sid=9f807c&_nc_ohc=BnmXWpUWk5AQ7kNvwGD_xNy&_nc_oc=AdqoaB1F-gDvbPBwIP51Gi29f58LhhVR7VE3moKNJSUJbwmuh8DabOJAL3Mr3LUIbRYAPHDVCB01l75KHe7gYGWR&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD5QEA4XWZF5lrDDM_ZL6615aM2Xsx38cDEvbQIA2xEHYcpQ&oe=6A36C7A9"
+            },
+            {
+                id: 3,
+                title: "محفظة بوردو الأيقونية الفاخرة",
+                category: "access",
+                categoryText: "الإكسسوارات والكماليات",
+                desc: "محفظة جيب صغيرة الحجم بالنقشة الرمادية العريقة وحلية ذهبية حرف D، تأتي داخل علبة بوردو الأنيقة.",
+                /* 📸 صورة حقيبتكِ الثالثة المرفقة */
+                image: "https://scontent.xx.fbcdn.net/v/t1.15752-9/676392102_837820296057574_1501491518571194233_n.png?_nc_cat=102&ccb=1-7&_nc_sid=9f807c&_nc_ohc=_7b4IybpMAIQ7kNvwHKLQng&_nc_oc=AdpOdCYGReGzJE7J0iCddigB9IpI0ksOQtEv5qvABAoh2No0TDo6pKypiIku0k4i6ELae5Qpqs7rZ23LSQoUH2WH&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD5QEVQjE4OYHcQo_mDO3llXDk2p0i7tKMLcwDaYQJxRmbDg&oe=6A36D6DD"
+            },
+            {
+                id: 4,
+                title: "حقيبة سرج بوردو السوداء والذهبية",
+                category: "bags",
+                categoryText: "حقائب متميزة",
+                desc: "حقيبة السرج الأيقونية باللون الأسود الملكي مع حزام كتف مطرز أنيق وحلية حرف D الفضية الساحرة.",
+                /* 📸 صورة حقيبتكِ الرابعة المرفقة */
+                image: "image_9cd8c0.png"
+            },
+            {
+                id: 5,
+                title: "حقيبة سرج بوردو البيج الوردي",
+                category: "bags",
+                categoryText: "حقائب متميزة",
+                desc: "حقيبة السرج بلون بيج وردي ناعم يضفي أنوثة هادئة لإطلالتك اليومية والمسائية.",
+                /* 📸 صورة حقيبتكِ الخامسة المرفقة */
+                image: "image_9cd8c3.jpg"
+            },
+            {
+                id: 6,
+                title: "حقيبة بوردو كروكو عنابي",
+                category: "bags",
+                categoryText: "حقائب متميزة",
+                desc: "تصميم كلاسيكي بجلد التمساح العنابي اللامع مع سلسلة كتف ذهبية عتيقة تمنح حضوراً مميزاً.",
+                /* 📸 صورة حقيبتكِ السادسة المرفقة */
+                image: "image_9cd866.png" || "image_9cd8c6.png"
+            },
+            {
+                id: 7,
+                title: "طقم الأساور الذهبية العتيقة",
+                category: "jewelry",
+                categoryText: "مجوهرات كلاسيكية",
+                desc: "مجموعة متناسقة من الأساور بلون ذهبي مطفأ مصقولة بعناية.",
+                image: "https://placehold.co/600x600/FAF6F0/1E1512?text=PORDO+7"
+            },
+            {
+                id: 8,
+                title: "سوار بوردو الترابي الدافئ",
+                category: "jewelry",
+                categoryText: "مجوهرات كلاسيكية",
+                desc: "سوار كلاسيكي ناعم منسوج بخيوط ترابية مدمجة بقطع ذهبية هادئة.",
+                image: "https://placehold.co/600x600/FAF6F0/1E1512?text=PORDO+8"
+            },
+            {
+                id: 9,
+                title: "خاتم بوردو الزمردي الكلاسيكي",
+                category: "jewelry",
+                categoryText: "مجوهرات كلاسيكية",
+                desc: "خاتم كلاسيكي بقطعة زجاجية زمردية ناصعة وتفاصيل ذهبية عتيقة.",
+                image: "https://placehold.co/600x600/FAF6F0/1E1512?text=PORDO+9"
+            },
+            {
+                id: 10,
+                title: "أقراط بوردو المنسوجة بالذهب",
+                category: "jewelry",
+                categoryText: "مجوهرات كلاسيكية",
+                desc: "أقراط كلاسيكية تعطي بريقاً هادئاً وناعماً يكمل أناقتك اليومية.",
+                image: "https://placehold.co/600x600/FAF6F0/1E1512?text=PORDO+10"
+            },
+            {
+                id: 11,
+                title: "عقد بوردو تشوكر لؤلؤي",
+                category: "jewelry",
+                categoryText: "مجوهرات كلاسيكية",
+                desc: "عقد تشوكر كلاسيكي يلتف حول العنق مع لآلئ بيضاء طبيعية متناسقة.",
+                image: "https://placehold.co/600x600/FAF6F0/1E1512?text=PORDO+11"
+            },
+            {
+                id: 12,
+                title: "نظارة شمسية كلاسيك بإطار عسلي",
+                category: "access",
+                categoryText: "الإكسسوارات والكماليات",
+                desc: "نظارة تعيد بريق الأيام الكلاسيكية بعدسات مريحة للعين وإطار عسلي جذاب.",
+                image: "https://placehold.co/600x600/FAF6F0/1E1512?text=PORDO+12"
+            },
+            {
+                id: 13,
+                title: "بروش الكلاسيك المطلي بالبرونز",
+                category: "jewelry",
+                categoryText: "مجوهرات كلاسيكية",
+                desc: "بروش متناسق لوشاحك أو معطفك يبرز طابع بوردو الكلاسيكي العريق.",
+                image: "https://placehold.co/600x600/FAF6F0/1E1512?text=PORDO+13"
+            },
+            {
+                id: 14,
+                title: "حزام بوردو الكلاسيكي بإبزيم أنيق",
+                category: "access",
+                categoryText: "الإكسسوارات والكماليات",
+                desc: "حزام خصر كلاسيكي مصنوع من الجلد الطبيعي المتين مع إبزيم معدني ذهبي.",
+                image: "https://placehold.co/600x600/FAF6F0/1E1512?text=PORDO+14"
+            },
+            {
+                id: 15,
+                title: "سوار المعصم العريض اللامع",
+                category: "jewelry",
+                categoryText: "مجوهرات كلاسيكية",
+                desc: "سوار ذهبي عريض مصقول بطريقة فنية يعكس الضوء بشكل راقٍ ومميز.",
+                image: "https://placehold.co/600x600/FAF6F0/1E1512?text=PORDO+15"
+            },
+            {
+                id: 16,
+                title: "سلسال التوباز الكلاسيكي",
+                category: "jewelry",
+                categoryText: "مجوهرات كلاسيكية",
+                desc: "سلسال ناعم مذهل يحتوي على حجر التوباز الطبيعي ذو الألوان الترابية المتناسقة.",
+                image: "https://placehold.co/600x600/FAF6F0/1E1512?text=PORDO+16"
+            },
+            {
+                id: 17,
+                title: "حقيبة الباكيت من الساتان المميز",
+                category: "bags",
+                categoryText: "حقائب متميزة",
+                desc: "حقيبة يد مريحة دائرية القاعدة من قماش الساتان الترابي اللامع والجلد.",
+                image: "https://placehold.co/600x600/FAF6F0/1E1512?text=PORDO+17"
+            },
+            {
+                id: 18,
+                title: "حقيبة توت السفر الكلاسيكية",
+                category: "bags",
+                categoryText: "حقائب متميزة",
+                desc: "حقيبة السفر الأنيقة، رفيقك المثالي في الرحلات بفضل المتانة والتصميم الخالد.",
+                image: "https://placehold.co/600x600/FAF6F0/1E1512?text=PORDO+18"
+            },
+            {
+                id: 19,
+                title: "محفظة بوردو الكلاسيكية المدمجة",
+                category: "access",
+                categoryText: "الإكسسوارات والكماليات",
+                desc: "محفظة يد صغيرة للبطاقات والنقود مصممة لتوفر الأناقة العملية في التنقل اليومي.",
+                image: "https://placehold.co/600x600/FAF6F0/1E1512?text=PORDO+19"
+            },
+            {
+                id: 20,
+                title: "حقيبة لورد الجلدية الكاكاوي",
+                category: "bags",
+                categoryText: "حقائب متميزة",
+                desc: "حقيبة مصممة بلون ترابي كلاسيكي غامق مع حزام كتف إضافي مريح وعملي.",
+                image: "https://placehold.co/600x600/FAF6F0/1E1512?text=PORDO+20"
+            }
+        ];
+
+        // مصفوفة قائمة الطلبات
+        let cart = [];
+
+        // إظهار وإخفاء حقل العنوان المخصص
+        document.getElementById('cust-university').addEventListener('change', function() {
+            const addressField = document.getElementById('address-field');
+            if (this.value === 'عنوان آخر') {
+                addressField.style.display = 'block';
+                document.getElementById('cust-address').required = true;
+            } else {
+                addressField.style.display = 'none';
+                document.getElementById('cust-address').required = false;
+            }
+        });
+
+        // دالة لعرض المنتجات في الشبكة بشكل تفاعلي وفلترتها
+        function renderProducts(productsList = products) {
+            const container = document.getElementById('products-grid-container');
+            container.innerHTML = '';
+            
+            productsList.forEach(prod => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="image-frame">
+                        <img src="${prod.image}" alt="${prod.title}" loading="lazy" onerror="this.src='https://placehold.co/600x600/FAF6F0/1E1512?text=PORDO'">
+                        <div class="quick-view-overlay">
+                            <button class="btn-quick-view" onclick="openQuickView(${prod.id})">
+                                <i class="fa-solid fa-eye"></i> نظرة سريعة
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="product-cat">${prod.categoryText}</div>
+                        <h4 class="product-title">${prod.title}</h4>
+                    </div>
+                    <button class="btn-add-cart" onclick="addToCart(${prod.id})">
+                        <i class="fa-solid fa-cart-plus"></i> إضافة لقائمة الطلبات
+                    </button>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // تنقل الصفحات
+        function switchPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(sec => {
+                sec.classList.remove('active');
+            });
+            document.getElementById(`page-${pageId}`).classList.add('active');
+            
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.getElementById(`nav-${pageId}`).classList.add('active');
+
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // فلترة المنتجات حسب الفئات
+        function filterCategory(cat, btn) {
+            document.querySelectorAll('.filter-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            btn.classList.add('active');
+
+            if (cat === 'all') {
+                renderProducts(products);
+            } else {
+                const filtered = products.filter(p => p.category === cat);
+                renderProducts(filtered);
+            }
+        }
+
+        // فتح وإغلاق قائمة الطلبات
+        function toggleCart() {
+            document.getElementById('cart-overlay').classList.toggle('active');
+        }
+
+        // إضافة منتج لقائمة الطلبات
+        function addToCart(prodId) {
+            const product = products.find(p => p.id === prodId);
+            const existItem = cart.find(item => item.id === prodId);
+
+            if (existItem) {
+                existItem.qty += 1;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+
+            updateCartUI();
+            
+            const cartBtn = document.querySelector('.header-btn');
+            cartBtn.style.transform = 'scale(1.2)';
+            setTimeout(() => { cartBtn.style.transform = 'scale(1)'; }, 300);
+        }
+
+        // تحديث واجهة قائمة الطلبات
+        function updateCartUI() {
+            const listContainer = document.getElementById('cart-items');
+            listContainer.innerHTML = '';
+            
+            let totalQty = 0;
+
+            cart.forEach(item => {
+                totalQty += item.qty;
+
+                const row = document.createElement('div');
+                row.className = 'cart-item';
+                row.innerHTML = `
+                    <div class="cart-item-img">
+                        <img src="${item.image}" alt="${item.title}" onerror="this.src='https://placehold.co/600x600/FAF6F0/1E1512?text=PORDO'">
+                    </div>
+                    <div class="cart-item-info">
+                        <div class="cart-item-title">${item.title}</div>
+                        <div class="cart-item-qty">
+                            <button class="qty-btn" onclick="changeQty(${item.id}, -1)">-</button>
+                            <span>${item.qty}</span>
+                            <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+                            <button class="btn-remove-item" onclick="removeFromCart(${item.id})" style="margin-right: auto;"><i class="fa-solid fa-trash-can"></i></button>
+                        </div>
+                    </div>
+                `;
+                listContainer.appendChild(row);
+            });
+
+            document.getElementById('cart-count').innerText = totalQty;
+        }
+
+        // تغيير الكمية
+        function changeQty(prodId, delta) {
+            const item = cart.find(i => i.id === prodId);
+            if (item) {
+                item.qty += delta;
+                if (item.qty <= 0) {
+                    removeFromCart(prodId);
+                } else {
+                    updateCartUI();
+                }
+            }
+        }
+
+        // حذف منتج من السلة
+        function removeFromCart(prodId) {
+            cart = cart.filter(i => i.id !== prodId);
+            updateCartUI();
+        }
+
+        // فتح نافذة إرسال وتأكيد الطلب
+        function openCheckout() {
+            if (cart.length === 0) {
+                return;
+            }
+            const invoiceItems = document.getElementById('invoice-items-list');
+            invoiceItems.innerHTML = '';
+            
+            cart.forEach(item => {
+                const row = document.createElement('div');
+                row.className = 'invoice-row';
+                row.innerHTML = `
+                    <span>${item.title}</span>
+                    <span>العدد: ${item.qty}</span>
+                `;
+                invoiceItems.appendChild(row);
+            });
+
+            document.getElementById('checkout-overlay').style.display = 'flex';
+        }
+
+        // إغلاق نافذة التأكيد
+        function closeCheckout() {
+            document.getElementById('checkout-overlay').style.display = 'none';
+        }
+
+        // إرسال الطلب النهائي المنسق إلى الواتساب المباشر
+        function submitOrder(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('cust-name').value;
+            const phone = document.getElementById('cust-phone').value;
+            const university = document.getElementById('cust-university').value;
+            const addressInput = document.getElementById('cust-address').value;
+            
+            let addressText = university;
+            if (university === 'عنوان آخر') {
+                addressText = addressInput;
+            }
+            
+            let itemsText = "";
+            cart.forEach(item => {
+                itemsText += `- *${item.title}* | العدد: ${item.qty}\n`;
+            });
+
+            const whatsappMsg = encodeURIComponent(
+`👑 *طلب شراء جديد من متجر بوردو | PORDO* 👑
+
+أود تأكيد طلبي للقطع التالية:
+
+*تفاصيل المشتريات:*
+${itemsText}
+*بيانات التوصيل والطلب:*
+👤 *الاسم الكريم:* ${name}
+📞 *رقم التواصل:* ${phone}
+📍 *العنوان / الجامعة:* ${addressText}
+
+بانتظار تأكيد الاستلام من بوردو ✨`
+            );
+
+            // يمكنك تغيير الرقم أدناه برقم الواتساب الخاص بكِ ليتلقى الطلبات
+            const storeWhatsappNumber = "970590000000"; 
+            const whatsappURL = `https://api.whatsapp.com/whatsapp://send?phone=${storeWhatsappNumber}&text=${whatsappMsg}`;
+            const webWhatsappURL = `https://web.whatsapp.com/send?phone=${storeWhatsappNumber}&text=${whatsappMsg}`;
+
+            if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
+                window.open(whatsappURL, '_blank');
+            } else {
+                window.open(webWhatsappURL, '_blank');
+            }
+
+            cart = [];
+            updateCartUI();
+            closeCheckout();
+            toggleCart();
+        }
+
+        // فتح نظرة سريعة للمنتج
+        function openQuickView(prodId) {
+            const prod = products.find(p => p.id === prodId);
+            if (prod) {
+                document.getElementById('qv-img-src').src = prod.image;
+                document.getElementById('qv-title-text').innerText = prod.title;
+                document.getElementById('qv-desc-text').innerText = prod.desc;
+                
+                const addBtn = document.getElementById('qv-add-btn');
+                addBtn.onclick = function() {
+                    addToCart(prod.id);
+                    closeQuickView();
+                    toggleCart();
+                };
+
+                document.getElementById('qv-overlay').style.display = 'flex';
+            }
+        }
+
+        // إغلاق نظرة سريعة
+        function closeQuickView() {
+            document.getElementById('qv-overlay').style.display = 'none';
+        }
+
+        window.onload = function() {
+            renderProducts();
+        };
+    </script>
+</body>
+</html>
